@@ -4,7 +4,7 @@
 "use strict";
 
 //vars
-var subjects = [];
+//empty
 
 
 function rollInitiative(mod){
@@ -21,31 +21,23 @@ function createIniList(obj){
     }
 };
 
-/*$("#create").click(function() {
-    //alert("clickhandler fired");
-    subjects.mod = $("input[type=number]").map(function() { return this.value; }).get();
-    subjects.name = $("input[type=text]").map(function() { return this.value; }).get();
-    createIniList();
-});*/
-
-$('#create').click(function(){
-    // For every row in now... (You should add another class because you only want npc rows)
-    $('.col-lg-6').each(function(i, $row){
-        // Create object from inputs of a specific row from this dimension.
-        var newNpc = {
-            name: $('input[type=text]', $row).val(),
-            iniNumber: rollInitiative(parseInt($('input[type=number]', $row).val()))
-        };
-
-        // Add object to array to fill our insecurities.
-        subjects.push(newNpc);
-    });
-    var iniList = [];
-    iniList = subjects.sort(function (a, b) { return b.iniNumber - a.iniNumber;  })
-    createIniList(iniList);
-});
-
 $(document).ready(function(){
-    //for(let y=0; y<12; y++) console.log(rollInitiative(0));
+    var subjects = [];
+    $('#create').click(function(){
+        $('.col-lg-6').each(function(i, $row){
+            var newNpc = {
+                name: $('input[type=text]', $row).val(),
+                iniNumber: rollInitiative(parseInt($('input[type=number]', $row).val()))
+            };
+            subjects.push(newNpc);
+        });
+        var iniList = [];
+        iniList = subjects.sort(function (a, b) { return b.iniNumber - a.iniNumber;  })
+        createIniList(iniList);
+    });
+    $('#clear').click(function(){
+        subjects = [];
+        $("#iniRank").empty();
+    });
 });
 
