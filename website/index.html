@@ -16,6 +16,12 @@
     <!-- Custom styles for this template -->
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script>
+          if (typeof jQuery == 'undefined') {
+              //noinspection JSDeprecatedSymbols
+              document.write(unescape("%3Cscript src='/js/jquery-2.1.4.js' type='text/javascript'%3E%3C/script%3E"));
+          };
+      </script>
     <script src="js/underscoreJS.js"></script>
   </head>
 
